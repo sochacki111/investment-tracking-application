@@ -1,12 +1,13 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   useReactTable,
   getCoreRowModel,
   flexRender,
   createColumnHelper,
 } from '@tanstack/react-table';
+import { getInvestments } from '../data/investments';
 
 type Investment = {
   id: number;
@@ -15,30 +16,6 @@ type Investment = {
   buyPrice: number;
   currentPrice: number;
 };
-
-const sampleData: Investment[] = [
-  {
-    id: 1,
-    name: "Stock A",
-    quantity: 10,
-    buyPrice: 150,
-    currentPrice: 175
-  },
-  {
-    id: 2,
-    name: "Stock B",
-    quantity: 5,
-    buyPrice: 200,
-    currentPrice: 190
-  },
-  {
-    id: 3,
-    name: "Mutual Fund",
-    quantity: 100,
-    buyPrice: 15,
-    currentPrice: 16
-  }
-];
 
 const columnHelper = createColumnHelper<Investment>();
 
@@ -67,14 +44,24 @@ const columns = [
 ];
 
 const InvestmentTracker: React.FC = () => {
+  const [investments, setInvestments] = useState<Investment[]>([]);
+
+  useEffect(() => {
+    async function fetchData() {
+      const data = await getInvestments();
+      setInvestments(data);
+    }
+    fetchData();
+  }, []);
+
   const table = useReactTable({
-    data: sampleData,
+    data: investments,
     columns,
     getCoreRowModel: getCoreRowModel(),
   });
 
-  const totalInvestment = sampleData.reduce((sum, investment) => sum + investment.quantity * investment.buyPrice, 0);
-  const totalCurrentValue = sampleData.reduce((sum, investment) => sum + investment.quantity * investment.currentPrice, 0);
+  const totalInvestment = investments.reduce((sum, investment) => sum + investment.quantity * investment.buyPrice, 0);
+  const totalCurrentValue = investments.reduce((sum, investment) => sum + investment.quantity * investment.currentPrice, 0);
   const totalGainLoss = totalCurrentValue - totalInvestment;
 
   return (
