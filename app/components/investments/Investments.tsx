@@ -1,5 +1,4 @@
 import { getInvestments } from "../../../data/investments";
-import InvestmentList from "./InvestmentList";
 
 export default async function Investments() {
   const investments = await getInvestments();
@@ -7,7 +6,9 @@ export default async function Investments() {
   return (
     <div>
       <h1>Investments</h1>
-      <InvestmentList investments={investments} />
+      {investments.map((investment) => (
+        <li key={investment.id}>{investment.name}</li>
+      ))}
     </div>
   );
 }
