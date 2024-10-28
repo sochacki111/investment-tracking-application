@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { addInvestmentAction } from '../actions/addInvestment.action';
+import { addInvestmentAction } from '../../actions/addInvestment.action';
 
 export function AddInvestmentForm() {
   const [formData, setFormData] = useState({

@@ -1,5 +1,5 @@
-import { AddInvestmentForm } from "./components/AddInvestmentForm";
-import Investments from "./components/investments";
+import { AddInvestmentForm } from "./components/add-investment/AddInvestmentForm";
+import Investments from "./components/investments/Investments";
 
 export default function Home() {
   return (

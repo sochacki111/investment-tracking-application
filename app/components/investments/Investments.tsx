@@ -1,5 +1,4 @@
-"use server";
-import { getInvestments } from "../../data/investments";
+import { getInvestments } from "../../../data/investments";
 import InvestmentList from "./InvestmentList";
 
 export default async function Investments() {

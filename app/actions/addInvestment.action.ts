@@ -1,5 +1,3 @@
-'use server';
-
 import { addInvestment } from '@/data/investments';
 
 export async function addInvestmentAction({
