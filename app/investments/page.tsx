@@ -1,5 +1,5 @@
 import { getInvestments } from "../../data/investments";
-import InvestmentList from "@/app/investments/InvestmentList";
+import InvestmentList from "./InvestmentList";
 
 export default async function InvestmentsPage() {
   const investments = await getInvestments();
