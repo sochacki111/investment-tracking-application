@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { AddInvestmentAction } from './AddInvestmentAction';
+import { addInvestmentAction } from '../actions/addInvestment.action';
 
 export function AddInvestmentForm() {
   const [formData, setFormData] = useState({
@@ -15,7 +15,7 @@ export function AddInvestmentForm() {
     e.preventDefault();
     
     try {
-      await AddInvestmentAction({
+      await addInvestmentAction({
         name: formData.name,
         quantity: Number(formData.quantity),
         buyPrice: Number(formData.buyPrice),

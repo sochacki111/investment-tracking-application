@@ -1,3 +1,4 @@
+
 export default function InvestmentList({ investments }) {
   return (
     <ul>

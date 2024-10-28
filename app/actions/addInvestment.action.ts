@@ -2,7 +2,7 @@
 
 import { addInvestment } from '@/data/investments';
 
-export async function AddInvestmentAction({
+export async function addInvestmentAction({
   name,
   quantity,
   buyPrice,
