@@ -1,19 +1,19 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import { addInvestmentAction } from '../../actions/addInvestment.action';
-
+import { useState } from "react";
+import { addInvestmentAction } from "../../actions/addInvestment.action";
+import { InvestmentToInsert } from "@/app/types/investment-to-insert";
 export function AddInvestmentForm() {
-  const [formData, setFormData] = useState({
-    name: '',
-    quantity: '',
-    buyPrice: '',
-    currentPrice: ''
+  const [formData, setFormData] = useState<InvestmentToInsert>({
+    name: "",
+    quantity: 0,
+    buyPrice: 0,
+    currentPrice: 0,
   });
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     try {
       await addInvestmentAction({
         name: formData.name,
@@ -24,14 +24,13 @@ export function AddInvestmentForm() {
 
       // Reset form
       setFormData({
-        name: '',
-        quantity: '',
-        buyPrice: '',
-        currentPrice: ''
+        name: "",
+        quantity: 0,
+        buyPrice: 0,
+        currentPrice: 0,
       });
-
     } catch (error) {
-      console.error('Error adding investment:', error);
+      console.error("Error adding investment:", error);
     }
   };
 
@@ -59,7 +58,9 @@ export function AddInvestmentForm() {
           type="number"
           id="quantity"
           value={formData.quantity}
-          onChange={(e) => setFormData({ ...formData, quantity: e.target.value })}
+          onChange={(e) =>
+            setFormData({ ...formData, quantity: Number(e.target.value) })
+          }
           className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2"
           required
         />
@@ -74,7 +75,9 @@ export function AddInvestmentForm() {
           id="buyPrice"
           step="0.01"
           value={formData.buyPrice}
-          onChange={(e) => setFormData({ ...formData, buyPrice: e.target.value })}
+          onChange={(e) =>
+            setFormData({ ...formData, buyPrice: Number(e.target.value) })
+          }
           className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2"
           required
         />
@@ -89,7 +92,9 @@ export function AddInvestmentForm() {
           id="currentPrice"
           step="0.01"
           value={formData.currentPrice}
-          onChange={(e) => setFormData({ ...formData, currentPrice: e.target.value })}
+          onChange={(e) =>
+            setFormData({ ...formData, currentPrice: Number(e.target.value) })
+          }
           className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2"
           required
         />

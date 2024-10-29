@@ -1,17 +1,13 @@
 'use server';
 import { addInvestment } from '@/data/investments';
+import { InvestmentToInsert } from '../types/investment-to-insert';
 
 export async function addInvestmentAction({
   name,
   quantity,
   buyPrice,
   currentPrice,
-}: {
-  name: string;
-  quantity: number;
-  buyPrice: number;
-  currentPrice: number;
-}) {
+}: InvestmentToInsert) {
   return addInvestment({
     name,
     quantity,

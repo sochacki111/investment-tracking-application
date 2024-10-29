@@ -1,13 +1,7 @@
 import 'server-only';
 import { db } from "@/db/drizzle";
 import { investment } from '@/db/schema';
-
-interface InvestmentToInsert {
-  name: string;
-  quantity: number;
-  buyPrice: number;
-  currentPrice: number;
-}
+import { InvestmentToInsert } from '../app/types/investment-to-insert';
 
 export async function getInvestments() {
   const investments = await db.select().from(investment);
