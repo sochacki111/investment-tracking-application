@@ -21,5 +21,5 @@ npm run dev
 3. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 ## Further improvements
-- create tables: investment, user, user_investment in order to keep track of investments for multiple users
+- create tables: `investment`, `user`, `user_investment` in order to keep track of investments for multiple users
 
