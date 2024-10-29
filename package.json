@@ -9,8 +9,6 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@neondatabase/serverless": "^0.10.1",
-    "@tanstack/react-table": "^8.20.5",
     "dotenv": "^16.4.5",
     "drizzle-orm": "^0.35.3",
     "next": "15.0.1",
